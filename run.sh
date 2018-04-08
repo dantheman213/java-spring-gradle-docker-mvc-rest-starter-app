@@ -7,5 +7,12 @@ if [ -n "$DOCKER" ]; then
 else
     # not in docker
     homeDir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )" # get the relative path to the script's dir
-    eval "java -jar ${homeDir}/build/libs/app.jar"
+    execFile="${homeDir}/build/libs/app.jar"
+
+    if [ ! -f ${execFile} ]; then
+        echo "Please download Gradle and build the project according to the README before running this script."
+        exit 1
+    fi
+
+    eval "java -jar ${execFile}"
 fi

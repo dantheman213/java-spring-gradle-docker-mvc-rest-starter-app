@@ -1,10 +1,17 @@
+# OS level ignores
 .DS_Store
 [Tt]humbs.db
 
+# Generic stuff to ignore from build tools
 node_modules/
 *.log
+
+# Intellij project
+.idea/
 *.iml
 
+# Gradle ignores
 .gradle/
-.idea/
+gradle/
+gradlew*
 build/

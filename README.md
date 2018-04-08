@@ -23,7 +23,7 @@ When you're ready to build you can use **Gradle** to execute `clean` and `build`
 
 After you've built your application, it is time to run it. Execute the `run.sh` script in project root.
 
-The project is ready to build immediately with a Hello World message located at [http://localhost:8080/](http://localhost:8080/).
+The project is now running and ready to be used with a Hello World message located at [http://localhost:8080/](http://localhost:8080/).
 
 Learn more about **Spring MVC** here:
 

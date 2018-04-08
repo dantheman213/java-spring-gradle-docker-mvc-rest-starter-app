@@ -14,7 +14,7 @@ apply plugin: 'io.spring.dependency-management'
 
 bootJar {
     baseName = 'myapp'
-    version =  '0.1.0'
+    archiveName = 'app.jar'
 }
 
 repositories {

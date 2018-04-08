@@ -1,0 +1,11 @@
+version: '3'
+services:
+  myapp:
+    container_name: myapp
+    build: .
+    volumes:
+      - ./build/libs:/opt/app/bin
+    ports:
+      - 8080:8080
+      - 8000:8000
+    restart: always

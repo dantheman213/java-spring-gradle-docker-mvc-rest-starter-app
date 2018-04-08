@@ -19,7 +19,11 @@ In addition to that, developer tools like **Docker** and **Docker-Compose** have
 
 Open **Intellij IDEA** or your favorite IDE and import this project into the IDE as a **Gradle** project. Allow your IDE to download **Gradle** for you automatically and pull in the required sources specified in your `build.gradle`.
 
-When you're ready to build you can use **Gradle** to execute `clean` and `build` commands through your IDE or do it through the command-line using the `gradlew` tool. The project is ready to build immediately with a Hello World message located at [http://localhost:8080/](http://localhost:8080/).
+When you're ready to build you can use **Gradle** to execute `clean` and `build` commands through your IDE or do it through the command-line using the `gradlew` tool.
+
+After you've built your application, it is time to run it. Execute the `run.sh` script in project root.
+
+The project is ready to build immediately with a Hello World message located at [http://localhost:8080/](http://localhost:8080/).
 
 Learn more about **Spring MVC** here:
 

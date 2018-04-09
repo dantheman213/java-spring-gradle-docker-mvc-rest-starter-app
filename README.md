@@ -44,7 +44,11 @@ When you're ready to build you can use **Gradle** to execute `clean` and `build`
 
 After you've built your application, it is time to run it. Execute the `run.sh` script in project root.
 
-NOTE: You can also execute `./run.sh --build` in order to rebuild and run your project via script, rather than just run the existing binary.
+#### NOTES ####
+
+You may execute `./run.sh --build` in order to explicitly build or rebuild the project before running.
+
+You may also execute `./run.sh --build-only` if you only want to build or rebuild the project but NOT run it.
 
 ### Testing ###
 

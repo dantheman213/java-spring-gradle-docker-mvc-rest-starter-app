@@ -1,6 +1,8 @@
 #!/bin/bash
 
+# CLI switches/args
 SHOULD_REBUILD_PROJECT="false"
+REBUILD_ONLY="false"
 
 # If running Docker do one thing if running in local dev do another
 if [ -n "$DOCKER" ]; then
@@ -14,8 +16,13 @@ else
       if [ $1 = "--build" ]; then
         SHOULD_REBUILD_PROJECT="true"
         echo "Will rebuild project if it already exists..."
+      elif [ $1 = "--build-only" ]; then
+        REBUILD_ONLY="true"
+      else
+        echo "Invalid argument(s)!"
+        exit 1
       fi
-    else
+    elif [ $# -gt 1 ]; then
       echo "Too many arguments!"
       exit 1
     fi
@@ -53,5 +60,7 @@ else
     fi
 
     # Run the application
-    eval "java -jar ${APP_FILE_PATH}"
+    if [ $REBUILD_ONLY = "false" ]; then
+      eval "java -jar ${APP_FILE_PATH}"
+    fi
 fi

@@ -1,8 +1,8 @@
-# Spring Boot Hello World #
+# Java Spring MVC REST Bootstrap Application #
 
 ## Summary ##
 
-This is an example project to help you get bootstrapped with a Java **Spring MVC** project that also includes **Spring Boot**, and **Gradle**.
+This is an example project to help you get bootstrapped with a Java **Spring MVC** project aimed towards REST that also includes **Spring Boot**, and **Gradle**.
 
 In addition to that, developer tools like **Docker** and **Docker-Compose** have been added to get you into the code right away and not worried about the environment you need to deploy to.
 
@@ -14,6 +14,21 @@ In addition to that, developer tools like **Docker** and **Docker-Compose** have
 * Docker
 * Docker-Compose
 * Intellij IDEA (or another Java IDE or text editor)
+
+## What you Get ##
+
+### 10,000ft view ###
+
+* Simple code that is easy to understand.
+* You can begin to immediately code on top of this project to accelerate your own REST Java application.
+* Containerized application that's already setup with Docker, Docker-Compose, and ready for Kubernetes, Jenkins/Bamboo, and other build or devops tools.
+
+### Under the Microscope ###
+
+* Spring MVC 4 with Spring Boot allows for convention over configuration. Code immediately and be productive.
+* Custom annotation `@SecuredArea` included in order to easily protect your authorized-only REST routes in your Controllers.
+* Custom `run.sh` script that will install gradle, build your application, and run in it with one or more simple commands.
+* Stand up and tear down environments quickly with containerized-ready code.
 
 ## Getting Started ##
 

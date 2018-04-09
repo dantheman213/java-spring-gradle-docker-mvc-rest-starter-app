@@ -23,7 +23,7 @@ else
     HOME_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )" # get the relative path to the script's dir
     APP_FILE_PATH="${HOME_DIR}/build/libs/app.jar" # final path to the application
     GRADLE_VERSION=4.4
-    GRADLE_HOME="/opt/gradle/"
+    GRADLE_HOME="/opt/gradle"
     GRADLE_BIN_PATH="${GRADLE_HOME}/bin/"
     GRADLE_NAME="gradle-${GRADLE_VERSION}"
     TMP_PATH="/tmp"

@@ -14,6 +14,9 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 public class Application {
 
     public static void main(String[] args) throws Throwable {
+        Config config = new Config();
+
+        Logger.info("Starting application!");
         SpringApplication.run(Application.class, args);
     }
 

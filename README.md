@@ -22,12 +22,15 @@ In addition to that, developer tools like **Docker** and **Docker-Compose** have
 * Simple code that is easy to understand.
 * You can begin to immediately code on top of this project to accelerate your own REST Java application.
 * Containerized application that's already setup with Docker, Docker-Compose, and ready for Kubernetes, Jenkins/Bamboo, and other build or devops tools.
+* Azure, AWS, GCP, Heroku friendly code and paradigms.
 
 ### Under the Microscope ###
 
 * Spring MVC 4 with Spring Boot allows for convention over configuration. Code immediately and be productive.
 * Custom annotation `@SecuredArea` included in order to easily protect your authorized-only REST routes in your Controllers.
 * Custom `run.sh` script that will install gradle, build your application, and run in it with one or more simple commands.
+* Custom `Config` class that makes it easy to load application specific config data in a container-friendly way.
+* Custom `Logger` class that makes it easy to output your console information in a container-friendly way.
 * Stand up and tear down environments quickly with containerized-ready code.
 
 ## Getting Started ##
@@ -45,6 +48,10 @@ When you're ready to build you can use **Gradle** to execute `clean` and `build`
 After you've built your application, it is time to run it. Execute the `run.sh` script in project root.
 
 #### NOTES ####
+
+Run the script as root/sudo on Mac and Linux and with Admin Privs on Windows machines. You will also need to run `chmod +x run.sh` to allow the script to execute on non-Windows systems.
+
+Executing `run.sh` will run your project if the binary exists and only build when it doesn't exist.
 
 You may execute `./run.sh --build` in order to explicitly build or rebuild the project before running.
 

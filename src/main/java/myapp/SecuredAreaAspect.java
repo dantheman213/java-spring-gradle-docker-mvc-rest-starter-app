@@ -27,7 +27,7 @@ public class SecuredAreaAspect {
         HttpServletRequest req = getRequest();
 
         // Check header values or whatever custom code you want to do to secure this URL route and method
-        System.out.println("Authorization was checked!");
+        Logger.info("Authorization was checked!");
 
         // Throw Spring's AccessDeniedException if needed
         // throw new AccessDeniedException("Invalid credentials");

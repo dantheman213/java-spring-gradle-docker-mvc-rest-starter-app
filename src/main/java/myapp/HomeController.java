@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class HomeController {
     @RequestMapping("/")
     public String index() {
+        Logger.info("Hello World!");
         return "<h1>Hello, World!</h1><p>Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum</p>";
     }
 

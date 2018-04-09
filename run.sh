@@ -18,6 +18,7 @@ else
         echo "Will rebuild project if it already exists..."
       elif [ $1 = "--build-only" ]; then
         REBUILD_ONLY="true"
+        SHOULD_REBUILD_PROJECT="true"
       else
         echo "Invalid argument(s)!"
         exit 1

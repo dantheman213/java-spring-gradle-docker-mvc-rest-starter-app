@@ -1,3 +1,5 @@
+# This file needs a few fixes.. TBD
+
 FROM openjdk:8 AS builder
 
 COPY . /opt/app

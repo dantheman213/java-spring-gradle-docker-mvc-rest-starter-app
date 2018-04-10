@@ -14,7 +14,12 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 public class Application {
 
     public static void main(String[] args) throws Throwable {
-        Config config = new Config();
+        try {
+          Config config = new Config();
+        } catch(Exception ex) {
+          System.out.println("Unable to read env config!");
+          ex.printStackTrace();
+        }
 
         Logger.info("Starting application!");
         SpringApplication.run(Application.class, args);

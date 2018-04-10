@@ -31,6 +31,7 @@ In addition to that, developer tools like **Docker** and **Docker-Compose** have
 * Custom `run.sh` script that will install gradle, build your application, and run in it with one or more simple commands.
 * Custom `Config` class that makes it easy to load application specific config data in a container-friendly way.
 * Custom `Logger` class that makes it easy to output your console information in a container-friendly way.
+* Custom Secrets/Environment Variable management that is compatible with Docker-Compose, Kubernetes, or just vanilla stand-alone application.
 * Stand up and tear down environments quickly with containerized-ready code.
 
 ## Getting Started ##
@@ -38,6 +39,14 @@ In addition to that, developer tools like **Docker** and **Docker-Compose** have
 ### Open your IDE ###
 
 Open **Intellij IDEA** or your favorite IDE and import this project into the IDE as a **Gradle** project. Allow your IDE to download **Gradle** for you automatically and pull in the required sources specified in your `build.gradle`.
+
+### Managing Secrets ###
+
+Abstract and ephemeral paradigms are all the rage right now. Allow your application to load custom configuration variables depending on what environment it is in (local, dev, staging, production, etc).
+
+Duplicate `secrets.env.example` to `secrets.env` in your project root. Use this new config as a template to setup env vars in your application. Start adding new vars to `secrets.env` and `Config.java` once you're ready.
+
+Compatible with infrastructure like AWS, GCP, and Heroku along with tools like Docker-Compose or Kubernetes.
 
 ### Build with Gradle ###
 

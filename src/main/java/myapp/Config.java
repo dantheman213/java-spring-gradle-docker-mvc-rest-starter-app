@@ -4,8 +4,8 @@ public class Config {
     private static boolean isset = false;
 
     // List of configuration options for your application
-    private static int port;
-    private static String environment = null;
+    public static int port;
+    public static String environment = null;
 
     public Config() throws Exception {
         if(!isset) {

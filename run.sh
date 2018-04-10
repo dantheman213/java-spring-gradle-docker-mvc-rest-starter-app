@@ -36,6 +36,8 @@ else
     GRADLE_NAME="gradle-${GRADLE_VERSION}"
     TMP_PATH="/tmp"
 
+    # TBD CHECK TO SEE IF JAR IS IN SAME DIR AS RUN SH AND OVERRIDE APP_FILE_PATH IF SO
+
     # Check to see if developer has built the project or if we need to build it fresh
     if [ ! -f ${APP_FILE_PATH} ] || [ $SHOULD_REBUILD_PROJECT = "true" ]; then
 
@@ -60,8 +62,16 @@ else
       gradle clean build
     fi
 
-    # Run the application
+    # Inject secrets.env into env and run the application
     if [ $REBUILD_ONLY = "false" ]; then
+      if [ -f "${HOME_DIR}/secrets.env" ]; then
+        while IFS='' read -r line || [[ -n "$line" ]]; do
+            splitLine=(${line//=/ })
+            echo "Loading env var ${splitLine[0]}..."
+            eval "export ${line}"
+        done < "${HOME_DIR}/secrets.env"
+      fi
+
       eval "java -jar ${APP_FILE_PATH}"
     fi
 fi

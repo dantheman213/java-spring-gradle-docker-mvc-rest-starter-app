@@ -15,3 +15,6 @@ node_modules/
 gradle/
 gradlew*
 build/
+
+# Custom project stuff
+secrets.env

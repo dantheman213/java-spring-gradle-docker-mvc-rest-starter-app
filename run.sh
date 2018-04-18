@@ -1,11 +1,16 @@
 #!/bin/bash
+## This script will run the paired java application in dev or in production, in Docker env or in native env. ##
 
-# CLI switches/args
+##############################
+# CLI Switches/Args Selected #
+##############################
 
 SHOULD_REBUILD_PROJECT="false"
 REBUILD_ONLY="false"
 
-# Global vars
+###############
+# Global Vars #
+###############
 
 ARGS=( "$@" )
 ARG_COUNT=$#
@@ -17,7 +22,9 @@ GRADLE_BIN_PATH="${GRADLE_HOME}/bin/"
 GRADLE_NAME="gradle-${GRADLE_VERSION}"
 TMP_PATH="/tmp"
 
-# Application code begins
+#############################
+# App Code -- DO NOT MODIFY #
+#############################
 
 function checkAndInstallGradle {
     # Checking if gradle exists.. if not install it

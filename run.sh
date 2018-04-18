@@ -57,7 +57,7 @@ function injectSecrets {
     fi
 }
 
-function main() {
+function main {
     # If running Docker do one thing if running in local dev do another
     if [ -n "$DOCKER" ]; then
         # in docker, just run the application in the image

@@ -17,11 +17,11 @@ public class Application {
 
     public static void main(String[] args) throws Throwable {
         try {
-          Config config = new Config();
+            Config config = new Config();
         } catch(Exception ex) {
-          System.out.println("Unable to read env config!");
-          ex.printStackTrace();
-          System.exit(1);
+            System.out.println("Unable to read env config!");
+            ex.printStackTrace();
+            System.exit(1);
         }
 
         Logger.info("Starting application!");

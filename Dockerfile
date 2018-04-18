@@ -1,3 +1,7 @@
+###################
+# Build Container #
+###################
+
 FROM openjdk:8 AS builder
 
 WORKDIR /opt/app
@@ -6,7 +10,9 @@ COPY . .
 RUN chmod +x run.sh
 RUN run.sh --build-only
 
-###########
+####################
+# Deploy Container #
+####################
 
 FROM debian:stable AS deploy
 

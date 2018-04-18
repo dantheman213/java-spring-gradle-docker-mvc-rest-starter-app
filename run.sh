@@ -7,6 +7,8 @@ REBUILD_ONLY="false"
 
 # Global vars
 
+ARGS=( "$@" )
+ARG_COUNT=$#
 HOME_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )" # get the relative path to the script's dir
 APP_FILE_PATH="${HOME_DIR}/build/libs/app.jar" # final path to the application
 GRADLE_VERSION=4.4
@@ -48,7 +50,7 @@ function injectSecrets {
     fi
 }
 
-function main {
+function main() {
     # If running Docker do one thing if running in local dev do another
     if [ -n "$DOCKER" ]; then
         # in docker, just run the application in the image
@@ -57,24 +59,24 @@ function main {
     else
         # not in docker, in local env
 
-        if [ $# -eq 1 ]; then
-            if [ $1 = "--build" ]; then
+        if [ ${ARG_COUNT} -eq 1 ]; then
+            if [ ${ARGS[0]} = "--build" ]; then
                 SHOULD_REBUILD_PROJECT="true"
                 echo "Will rebuild project if it already exists..."
-            elif [ $1 = "--build-only" ]; then
+            elif [ ${ARGS[0]} = "--build-only" ]; then
                 REBUILD_ONLY="true"
                 SHOULD_REBUILD_PROJECT="true"
             else
                 echo "Invalid argument(s)!"
                 exit 1
             fi
-        elif [ $# -gt 1 ]; then
+        elif [ ${ARG_COUNT} -gt 1 ]; then
             echo "Too many arguments!"
             exit 1
         fi
 
         # Check to see if developer has built the project or if we need to build it fresh
-        if [ -f "${HOME_DIR}/app.jar ]; then
+        if [ -f "${HOME_DIR}/app.jar" ]; then
             APP_FILE_PATH="${HOME_DIR}/app.jar"
 
         elif [ ! -f ${APP_FILE_PATH} ] || [ $SHOULD_REBUILD_PROJECT = "true" ]; then

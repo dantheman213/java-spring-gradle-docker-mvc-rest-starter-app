@@ -52,31 +52,32 @@ public class ExceptionManager extends ResponseEntityExceptionHandler {
         return handleBadRequestException(ex);
     }
 
-    // Bad request exception handling #2
+    // Bad request exception handling Parent #2
     @ExceptionHandler({ConstraintViolationException.class})
     public ResponseEntity<Object> handleConstraintViolationException(Exception ex, WebRequest request) {
         return handleBadRequestException(ex);
     }
 
-    // Bad request exception handling #3
+    // Bad request exception handling Parent #3
     @Override
     protected ResponseEntity<Object> handleMissingServletRequestParameter(MissingServletRequestParameterException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
         return handleBadRequestException(ex);
     }
 
-    // Bad request exception handling #4
+    // Bad request exception handling Parent #4
     @ExceptionHandler({MethodArgumentTypeMismatchException.class})
     public ResponseEntity<Object> handleMethodArgumentTypeMismatch(MethodArgumentTypeMismatchException ex, WebRequest request) {
         return handleBadRequestException(ex);
     }
 
-    // Bad request exception handling #5
+    // Bad request exception handling Parent #5
     @Override
     protected ResponseEntity<Object> handleHttpMessageNotReadable(HttpMessageNotReadableException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
         return handleBadRequestException(ex);
     }
 
     // General exceptions
+    // This method should stay last as it is a 'catch all' for all exceptions.
     @ExceptionHandler({Exception.class})
     public ResponseEntity<String> handleGeneralException(Exception ex, WebRequest request) {
         // What the system administrator will see internally

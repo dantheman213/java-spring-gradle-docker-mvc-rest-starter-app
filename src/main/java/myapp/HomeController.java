@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 @RestController
 @RequestMapping("/")
 public class HomeController {
+
     // This is a basic route and you manually control the raw response. Not secured.
     @RequestMapping("/")
     public String index() throws Exception {

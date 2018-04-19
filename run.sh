@@ -28,7 +28,14 @@ TMP_PATH="/tmp"
 #############################
 
 function generateRandomString {
-    echo $(hexdump -n 16 -e '4/4 "%08X" 1 "\n"' /dev/random)
+    MD5_BIN="md5sum" # default for windows git bash and linux
+
+    COMMAND_OUTPUT=$(command -v md5sum)
+    if [ ${#COMMAND_OUTPUT} -lt 1 ]; then
+        MD5_BIN="md5" # OSX
+    fi
+
+    echo $(date | ${MD5_BIN} | tr -dc '[:alnum:]\n\r' | tr '[:upper:]' '[:lower:]')
 }
 
 function checkAndInstallGradle {

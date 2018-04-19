@@ -14,11 +14,12 @@ REBUILD_ONLY="false"
 
 ARGS=( "$@" )
 ARG_COUNT=$#
+USER_HOME_DIR="NULL"
 HOME_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )" # get the relative path to the script's dir
 APP_FILE_PATH="${HOME_DIR}/build/libs/app.jar" # final path to the application
 GRADLE_VERSION=4.4
-GRADLE_HOME="~/gradle" # Placed inside user's home dir
-GRADLE_BIN_PATH="${GRADLE_HOME}/bin/"
+GRADLE_HOME=""
+GRADLE_BIN_PATH=""
 GRADLE_NAME="gradle-${GRADLE_VERSION}"
 TMP_PATH="/tmp"
 
@@ -26,20 +27,32 @@ TMP_PATH="/tmp"
 # App Code -- DO NOT MODIFY #
 #############################
 
+function generateRandomString {
+    echo $(hexdump -n 16 -e '4/4 "%08X" 1 "\n"' /dev/random)
+}
+
 function checkAndInstallGradle {
     # Checking if gradle exists.. if not install it
+    cd ~
+    USER_HOME_DIR="$(pwd)"
+    GRADLE_HOME="${USER_HOME_DIR}/gradle"
+    GRADLE_BIN_PATH="${GRADLE_HOME}/bin/"
 
     if [ ! -d "${GRADLE_HOME}" ]; then
-        curl -fl https://downloads.gradle.org/distributions/${GRADLE_NAME}-bin.zip -o ${TMP_PATH}/gradle-bin.zip
-        cd ${TMP_PATH}
-        unzip ${TMP_PATH}/gradle-bin.zip
+        TMP_ARCHIVE_PATH="${TMP_PATH}/$(generateRandomString)"
+        mkdir -p ${TMP_ARCHIVE_PATH}
+
+        cd ${TMP_ARCHIVE_PATH}
+        curl -fl https://downloads.gradle.org/distributions/${GRADLE_NAME}-bin.zip -o ${TMP_ARCHIVE_PATH}/gradle-bin.zip
+        unzip ${TMP_ARCHIVE_PATH}/gradle-bin.zip
 
         mkdir -p ${GRADLE_HOME}
-        cp -Rav ${TMP_PATH}/${GRADLE_NAME}/. ${GRADLE_HOME}/.
+        cp -Rav ${TMP_ARCHIVE_PATH}/${GRADLE_NAME}/. ${GRADLE_HOME}/.
 
         cd ~
-        echo "export PATH=\$PATH:${GRADLE_BIN_PATH}" >> ~/.bash_profile
-        source ~/.bash_profile
+        echo "export PATH=\$PATH:${GRADLE_BIN_PATH}" >> ${USER_HOME_DIR}/.bash_profile
+        sleep 1
+        source ${USER_HOME_DIR}/.bash_profile
     fi
 }
 
@@ -67,7 +80,7 @@ function main {
         # not in docker, in local env
 
         if [ ${ARG_COUNT} -eq 1 ]; then
-            if [ ${ARGS[0]} = "--build" ]; then
+            if [ ${ARGS[0]} = "--build" ] || [ ${ARGS[0]} = "--rebuild" ]; then
                 SHOULD_REBUILD_PROJECT="true"
                 echo "Will rebuild project if it already exists..."
             elif [ ${ARGS[0]} = "--build-only" ]; then

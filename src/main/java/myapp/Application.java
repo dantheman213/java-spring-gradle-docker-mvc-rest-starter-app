@@ -1,18 +1,18 @@
 package myapp;
 
-import java.util.Arrays;
 import java.util.HashMap;
 
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
+import org.springframework.web.servlet.DispatcherServlet;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
-@SpringBootApplication
 @EnableAspectJAutoProxy
+@SpringBootApplication
+@EnableWebMvc
 public class Application {
 
     public static void main(String[] args) throws Throwable {
@@ -33,6 +33,15 @@ public class Application {
                 .sources(Application.class)
                 .properties(props)
                 .run(args);
+    }
+
+    // Enable 404 not found error catching
+    @Bean
+    public DispatcherServlet dispatcherServlet() {
+        DispatcherServlet dispatcher = new DispatcherServlet();
+        dispatcher.setThrowExceptionIfNoHandlerFound(true);
+
+        return dispatcher;
     }
 
 }

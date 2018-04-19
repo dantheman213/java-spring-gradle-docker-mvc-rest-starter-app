@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
+import org.springframework.web.servlet.NoHandlerFoundException;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 import org.springframework.security.access.AccessDeniedException;
 
@@ -21,7 +22,7 @@ import javax.validation.ConstraintViolationException;
 @ControllerAdvice
 public class ExceptionManager extends ResponseEntityExceptionHandler {
 
-    // This will be thrown if @SecuredArea validation in a given route fails
+    // Thrown if @SecuredArea validation in a given route fails
     @ExceptionHandler({AccessDeniedException.class})
     public ResponseEntity<String> handleAccessDeniedException(Exception ex, WebRequest request) {
         Logger.security("Access denied occurred!");
@@ -30,49 +31,49 @@ public class ExceptionManager extends ResponseEntityExceptionHandler {
         return new ResponseEntity<String>("Invalid credentials. Access is denied.", new HttpHeaders(), HttpStatus.UNAUTHORIZED); // HTTP 401
     }
 
-    // Bad request exception handling #1
+    // Not found (404) Exception
     @Override
-    protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
+    protected ResponseEntity<Object> handleNoHandlerFoundException(NoHandlerFoundException ex, HttpHeaders headers, HttpStatus status, WebRequest request)
+    {   Logger.info("NoHandlerFoundException occurred!");
+        return new ResponseEntity<Object>("Resource Not Found.", new HttpHeaders(), HttpStatus.NOT_FOUND);
+    }
+
+    // Bad request exception handling Core
+    private ResponseEntity<Object> handleBadRequestException(Exception ex) {
         Logger.info("Bad request occurred!");
 
         // What the client will see
         return new ResponseEntity<Object>("Invalid data or fields sent. Bad request.", new HttpHeaders(), HttpStatus.BAD_REQUEST); // HTTP 400
     }
 
+    // Bad request exception handling Parent #1
+    @Override
+    protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
+        return handleBadRequestException(ex);
+    }
+
     // Bad request exception handling #2
     @ExceptionHandler({ConstraintViolationException.class})
-    public ResponseEntity<String> handleConstraintViolationException(Exception ex, WebRequest request) {
-        Logger.info("Bad request occurred!");
-
-        // What the client will see
-        return new ResponseEntity<String>("Invalid data or fields sent. Bad request.", new HttpHeaders(), HttpStatus.BAD_REQUEST); // HTTP 400
+    public ResponseEntity<Object> handleConstraintViolationException(Exception ex, WebRequest request) {
+        return handleBadRequestException(ex);
     }
 
     // Bad request exception handling #3
     @Override
     protected ResponseEntity<Object> handleMissingServletRequestParameter(MissingServletRequestParameterException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
-        Logger.info("Bad request occurred!");
-
-        // What the client will see
-        return new ResponseEntity<Object>("Invalid data or fields sent. Bad request.", new HttpHeaders(), HttpStatus.BAD_REQUEST); // HTTP 400
+        return handleBadRequestException(ex);
     }
 
     // Bad request exception handling #4
     @ExceptionHandler({MethodArgumentTypeMismatchException.class})
     public ResponseEntity<Object> handleMethodArgumentTypeMismatch(MethodArgumentTypeMismatchException ex, WebRequest request) {
-        Logger.info("Bad request occurred!");
-
-        // What the client will see
-        return new ResponseEntity<Object>("Invalid data or fields sent. Bad request.", new HttpHeaders(), HttpStatus.BAD_REQUEST); // HTTP 400
+        return handleBadRequestException(ex);
     }
 
     // Bad request exception handling #5
     @Override
     protected ResponseEntity<Object> handleHttpMessageNotReadable(HttpMessageNotReadableException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
-        Logger.info("Bad request occurred!");
-
-        // What the client will see
-        return new ResponseEntity<Object>("Invalid data or fields sent. Bad request.", new HttpHeaders(), HttpStatus.BAD_REQUEST); // HTTP 400
+        return handleBadRequestException(ex);
     }
 
     // General exceptions

@@ -12,7 +12,7 @@ public class Config {
             Logger.info("Loading application configuration from environment");
 
             port = Integer.parseInt(System.getenv("APP_PORT"));
-            environment = System.getenv("ENVIRONMENT"); // 'DEV' or 'PROD'
+            environment = System.getenv("APP_ENVIRONMENT"); // 'DEV' or 'PROD'
 
             isset = true;
         }

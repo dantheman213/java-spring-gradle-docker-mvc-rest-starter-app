@@ -27,6 +27,7 @@ In addition to that, developer tools like **Docker** and **Docker-Compose** have
 ### Under the Microscope ###
 
 * Spring MVC 4 with Spring Boot allows for convention over configuration. Code immediately and be productive.
+* Custom exception handling management.
 * Data models easily validated with Javax validation integrated. (http://www.baeldung.com/javax-validation)
 * Input and output data as models with automatic JSON serialization/deserialization.
 * Custom annotation `@SecuredArea` included in order to easily protect your authorized-only REST routes in your Controllers.

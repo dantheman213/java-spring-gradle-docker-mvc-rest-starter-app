@@ -2,6 +2,7 @@ package myapp;
 
 import java.util.UUID;
 
+// Simple logging ideal for containerized environments like Kubernetes, App Engine, Heroku, etc.
 public class Logger {
     public static ErrorType ErrorType;
 
@@ -12,7 +13,8 @@ public class Logger {
         DEBUG,
         INFO,
         WARNING,
-        CRITICAL
+        CRITICAL,
+        SECURITY
     };
 
     public Logger() {
@@ -46,6 +48,10 @@ public class Logger {
 
     public static void critical(String logMessage) {
         System.out.println(String.format("[%s] %s", "CRITICAL", logMessage));
+    }
+
+    public static void security(String logMessage) {
+        System.out.println(String.format("[%s] %s", "SECURITY", logMessage));
     }
 
     private String generateIdentifier() {

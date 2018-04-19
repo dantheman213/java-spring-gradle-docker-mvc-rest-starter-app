@@ -31,4 +31,6 @@ dependencies {
     // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-aop
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-aop', version: '2.0.1.RELEASE'
 
+    // https://mvnrepository.com/artifact/org.springframework.security/spring-security-web
+    compile group: 'org.springframework.security', name: 'spring-security-web', version: '5.0.4.RELEASE'
 }

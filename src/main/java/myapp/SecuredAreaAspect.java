@@ -7,9 +7,9 @@ import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
+import org.springframework.security.access.AccessDeniedException;
 
 import javax.servlet.http.HttpServletRequest;
-import java.nio.file.AccessDeniedException;
 
 @Aspect
 @Component
@@ -26,11 +26,12 @@ public class SecuredAreaAspect {
     public Object doSomething(ProceedingJoinPoint pjp) throws Throwable {
         HttpServletRequest req = getRequest();
 
-        // Check header values or whatever custom code you want to do to secure this URL route and method
+        // TBD: Check header values or whatever custom code you want to do to secure this URL route and method
+
         Logger.info("Authorization was checked!");
 
         // Throw Spring's AccessDeniedException if needed
-        // throw new AccessDeniedException("Invalid credentials");
+        //throw new AccessDeniedException("Invalid credentials.");
 
         return pjp.proceed();
     }

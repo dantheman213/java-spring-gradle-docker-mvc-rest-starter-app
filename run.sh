@@ -1,5 +1,6 @@
 #!/bin/bash
-## This script will run the paired java application in dev or in production, in Docker env or in native env. ##
+## This script will run the paired java application in dev or in production,
+# in Docker env or in native env. It will also attempt to build it from sources. ##
 
 ##############################
 # CLI Switches/Args Selected #
@@ -76,8 +77,8 @@ function checkCommandLineArgs {
             exit 1
         fi
     elif [ ${ARG_COUNT} -gt 1 ]; then
-      echo "Too many arguments!"
-      exit 1
+        echo "Too many arguments!"
+        exit 1
     fi
 }
 
@@ -96,7 +97,7 @@ function injectSecrets {
 }
 
 function executeApp {
-  eval "java -jar ${APP_FILE_PATH}"
+    eval "java -jar ${APP_FILE_PATH}"
 }
 
 function main {

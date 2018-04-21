@@ -63,6 +63,24 @@ function checkAndInstallGradle {
     fi
 }
 
+function checkCommandLineArgs {
+  if [ ${ARG_COUNT} -eq 1 ]; then
+      if [ ${ARGS[0]} = "--build" ] || [ ${ARGS[0]} = "--rebuild" ]; then
+          SHOULD_REBUILD_PROJECT="true"
+          echo "Will rebuild project if it already exists..."
+      elif [ ${ARGS[0]} = "--build-only" ]; then
+          REBUILD_ONLY="true"
+          SHOULD_REBUILD_PROJECT="true"
+      else
+          echo "Invalid argument(s)!"
+          exit 1
+      fi
+  elif [ ${ARG_COUNT} -gt 1 ]; then
+      echo "Too many arguments!"
+      exit 1
+  fi
+}
+
 function injectSecrets {
     # Inject secrets.env into env and run the application
 
@@ -96,21 +114,7 @@ function main {
     else
         # not in docker, in local env
 
-        if [ ${ARG_COUNT} -eq 1 ]; then
-            if [ ${ARGS[0]} = "--build" ] || [ ${ARGS[0]} = "--rebuild" ]; then
-                SHOULD_REBUILD_PROJECT="true"
-                echo "Will rebuild project if it already exists..."
-            elif [ ${ARGS[0]} = "--build-only" ]; then
-                REBUILD_ONLY="true"
-                SHOULD_REBUILD_PROJECT="true"
-            else
-                echo "Invalid argument(s)!"
-                exit 1
-            fi
-        elif [ ${ARG_COUNT} -gt 1 ]; then
-            echo "Too many arguments!"
-            exit 1
-        fi
+        checkCommandLineArgs
 
         # Check to see if developer has built the project or if we need to build it fresh
         if [ -f "${HOME_DIR}/app.jar" ]; then

@@ -18,8 +18,8 @@ USER_HOME_DIR="NULL"
 HOME_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )" # get the relative path to the script's dir
 APP_FILE_PATH="${HOME_DIR}/build/libs/app.jar" # final path to the application
 GRADLE_VERSION=4.4
-GRADLE_HOME=""
-GRADLE_BIN_PATH=""
+GRADLE_HOME="NULL"
+GRADLE_BIN_PATH="NULL"
 GRADLE_NAME="gradle-${GRADLE_VERSION}"
 TMP_PATH="/tmp"
 
@@ -64,21 +64,21 @@ function checkAndInstallGradle {
 }
 
 function checkCommandLineArgs {
-  if [ ${ARG_COUNT} -eq 1 ]; then
-      if [ ${ARGS[0]} = "--build" ] || [ ${ARGS[0]} = "--rebuild" ]; then
-          SHOULD_REBUILD_PROJECT="true"
-          echo "Will rebuild project if it already exists..."
-      elif [ ${ARGS[0]} = "--build-only" ]; then
-          REBUILD_ONLY="true"
-          SHOULD_REBUILD_PROJECT="true"
-      else
-          echo "Invalid argument(s)!"
-          exit 1
-      fi
-  elif [ ${ARG_COUNT} -gt 1 ]; then
+    if [ ${ARG_COUNT} -eq 1 ]; then
+        if [ ${ARGS[0]} = "--build" ] || [ ${ARGS[0]} = "--rebuild" ]; then
+            SHOULD_REBUILD_PROJECT="true"
+            echo "Will rebuild project if it already exists..."
+        elif [ ${ARGS[0]} = "--build-only" ]; then
+            REBUILD_ONLY="true"
+            SHOULD_REBUILD_PROJECT="true"
+        else
+            echo "Invalid argument(s)!"
+            exit 1
+        fi
+    elif [ ${ARG_COUNT} -gt 1 ]; then
       echo "Too many arguments!"
       exit 1
-  fi
+    fi
 }
 
 function injectSecrets {

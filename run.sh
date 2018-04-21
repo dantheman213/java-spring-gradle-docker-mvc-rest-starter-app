@@ -77,12 +77,22 @@ function injectSecrets {
     fi
 }
 
+function executeApp {
+  eval "java -jar ${APP_FILE_PATH}"
+}
+
 function main {
     # If running Docker do one thing if running in local dev do another
-    if [ -n "$DOCKER" ]; then
+    if [ -n "$DOCKER_COMPOSE" ]; then
+        # in docker-compose, local dev and testing.
+        # here the image is mounted at /opt/bin/app.jar instead
+        APP_FILE_PATH="/opt/app/bin/app.jar"
+        executeApp
+    elif [ -n "$DOCKER" ]; then
         # in docker, just run the application in the image
         APP_FILE_PATH="/opt/app/app.jar"
-        eval "java -jar ${APP_FILE_PATH}"
+        executeApp
+
     else
         # not in docker, in local env
 
@@ -121,7 +131,7 @@ function main {
             injectSecrets
 
             # Run the application!
-            eval "java -jar ${APP_FILE_PATH}"
+            executeApp
         fi
     fi
 }

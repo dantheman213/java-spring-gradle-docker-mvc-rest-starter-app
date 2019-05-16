@@ -3,34 +3,28 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.0.1.RELEASE")
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.1.4.RELEASE")
     }
 }
 
 apply plugin: 'java'
+apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 
 bootJar {
-    baseName = 'myapp'
-    archiveName = 'app.jar'
+    baseName = 'myapp-FINAL'
 }
 
 repositories {
     mavenCentral()
 }
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+sourceCompatibility = 1.12
+targetCompatibility = 1.12
 
 dependencies {
-    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.0.1.RELEASE'
-
-    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-aop
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter-aop', version: '2.0.1.RELEASE'
-
-    // https://mvnrepository.com/artifact/org.springframework.security/spring-security-web
-    compile group: 'org.springframework.security', name: 'spring-security-web', version: '5.0.4.RELEASE'
+    compile("org.springframework.boot:spring-boot-starter-web")
+    testCompile('org.springframework.boot:spring-boot-starter-test')
 }

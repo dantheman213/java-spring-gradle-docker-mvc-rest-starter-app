@@ -1,38 +1,20 @@
-###################
-# Build Container #
-###################
+FROM openjdk:12 AS build
 
-FROM openjdk:8 AS builder
-
-WORKDIR /opt/app
+RUN mkdir -p /workspace
+WORKDIR /workspace
 COPY . .
+RUN yum install -y wget unzip
+RUN wget -O /tmp/gradle.zip http://services.gradle.org/distributions/gradle-5.4.1-bin.zip && \
+    unzip /tmp/gradle.zip -d /opt && \
+    mv /opt/gradle-5.4.1 /opt/gradle
 
-RUN chmod +x run.sh
-RUN run.sh --build-only
+RUN /opt/gradle/bin/gradle build
 
-####################
-# Deploy Container #
-####################
+# --
 
-FROM debian:stable AS deploy
-
-EXPOSE 80
-EXPOSE 8000
-EXPOSE 8080
-
-ENV DOCKER true
-
-RUN apt-get update
-RUN apt-get upgrade -y
-RUN apt-get install software-properties-common default-jre default-jdk -y
+FROM openjdk:12 AS deploy
 
 RUN mkdir -p /opt/app
-WORKDIR /opt/app
+COPY --from=build /workspace/build/libs/myapp-FINAL.jar /opt/app/myapp.jar
 
-# Copy app files to target container
-COPY --from=builder /opt/app/build/libs/app.jar ./app.jar
-COPY --from=builder /opt/app/run.sh ./run.sh
-
-# RUN CONTAINER
-RUN chmod +x run.sh
-CMD ["run.sh"]
+ENTRYPOINT ["java", "-jar", "/opt/app/myapp.jar"]

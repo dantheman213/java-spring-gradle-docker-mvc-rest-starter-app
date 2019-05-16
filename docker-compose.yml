@@ -1,15 +1,7 @@
-version: '3'
-services:
-  myapp:
-    container_name: myapp
-    build: .
-    volumes:
-      - ./build/libs:/opt/app/bin
-    ports:
-      - 8080:8080
-      - 8000:8000
-    env_file:
-      - ./secrets.env
-    environment:
-      - DOCKER_COMPOSE=true
-    restart: always
+server:
+  build: .
+  # Uncomment if you'd like to load your env vars from file
+  # env_file:
+  #   - secrets.env
+  ports:
+    - "8080:8080"

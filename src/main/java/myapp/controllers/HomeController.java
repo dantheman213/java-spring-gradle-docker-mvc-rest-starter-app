@@ -1,4 +1,4 @@
-package server.controllers;
+package myapp.controllers;
 
 import java.util.concurrent.atomic.AtomicLong;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -1,7 +1,10 @@
-server:
-  build: .
-  # Uncomment if you'd like to load your env vars from file
-  # env_file:
-  #   - secrets.env
-  ports:
-    - "8080:8080"
+version: '3'
+services:
+  myapp:
+    build: .
+    # Uncomment if you'd like to load your env vars from file
+    # env_file:
+    #   - secrets.env
+    ports:
+      - 8080:8080
+    restart: always

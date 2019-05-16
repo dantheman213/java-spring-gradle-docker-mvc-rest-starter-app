@@ -2,24 +2,37 @@
 
 This project is designed to get you bootstrapped immediately by providing a minimum set of code you'll need to begin developing a modern Java 12 containerized REST application.
 
-## Dependencies ##
+## What you get ##
 
-* Java 12 JRE + JDK
-* Gradle 5.4.1+
+* Java 12
+* Spring MVC + Boot
+* Gradle 5.4.x
+* Docker
+* Docker Compose
+
+## Prerequisites ##
+
+### Minimum ###
+
 * Docker
 * Docker-Compose
 
+### Nice to Haves ###
+
+* Java 12 JDK
+* IDE (Intellij, NetBeans, Eclipse, etc)
+
 ## Getting Started ##
 
-### Open your IDE ###
+### Import Project into IDE ###
 
-Open **Intellij IDEA** or your favorite IDE and import this project into the IDE as a **Gradle** project. Allow your IDE to download **Gradle** for you automatically and pull in the required sources specified in your `build.gradle`.
+Open your IDE, I recommend **Intellij IDEA** but you can use your favorite IDE, and import this project as a **Gradle** project. Allow your IDE to download **Gradle** for you automatically (if you'd like to run locally) and pull in the required sources specified in your `build.gradle`.
 
 ### Managing Secrets ###
 
-Have state data you need to inject? Add your environment variables to a `secrets.env` file to be loaded at container start.
+Does your application have state data you need to inject at runtime? Add environment variables to a `secrets.env` file to be loaded at container start.
 
-Compatible with infrastructure like AWS, GCP, and Heroku along with tools like Docker-Compose or Kubernetes.
+Compatible with clouds like AWS, GCP, and Heroku in addition to services like Compose, Swarm, ECS, or Kubernetes.
 
 ### Build and Run your Application ###
 
@@ -31,8 +44,4 @@ The application is now running. Please visit [http://localhost:8080/](http://loc
 
 ## References ##
 
-The inspiration for this project is extended from [Spring Boot Getting Started](https://spring.io/guides/gs/spring-boot/).
-
-Learn more about **Spring MVC** here:
-
-[https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#mvc-ann-requestmapping](https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#mvc-ann-requestmapping)
+[Spring Boot Getting Started](https://spring.io/guides/gs/spring-boot/)

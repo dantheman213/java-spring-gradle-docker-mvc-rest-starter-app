@@ -81,7 +81,15 @@ If you're in a production environment and need your application to scale, I woul
 
 #### Web server reverse proxy
 
-If you're running in a non-scalable environment, a single instance in production, or in a staging/development/qa/misc environment I would recommend looking at a reverse proxy using **nginx** or **Apache**.
+If you're running in a non-scalable environment, a single instance in production, or in a staging/development/qa/misc environment I would recommend looking at a reverse proxy using **nginx** or **Apache**. Either of these web servers are great choices and they can provide HTTPS/SSL and proxy all the requests to your application via HTTP internally.
+
+#### Why not run SSL natively through Java / Tomcat?
+
+1. In a scalable environment you typically want to reduce any load at the application layer. In primarily security focused applications, requirements may be different.
+
+2. Configuring Java for SSL can be a pain. In my personal experience I have found it much easier to configure a load balancer or web server to serve the latest SSL/TLS ciphers and other security settings than to allow my Java/Tomcat application to do it.
+
+3. In general, SSL is more related to infrastructure than application level so there is a developer benefit of separation of concerns here.
 
 ## References
 

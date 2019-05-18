@@ -14,7 +14,7 @@ This project is designed to get you bootstrapped immediately by providing a mini
 
 ## Prerequisites
 
-### Minimum Software Required To Deploy
+### Minimum Software Required To Deploy Application
 
 * [Docker](https://www.docker.com)
 * [Compose](https://docs.docker.com/compose)

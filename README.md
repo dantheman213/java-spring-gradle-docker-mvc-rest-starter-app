@@ -1,4 +1,4 @@
-# Java Spring MVC REST Application
+# Modern Java "Hello World" REST Starter Application
 
 This project is designed to get you bootstrapped immediately by providing a minimum set of code you'll need to begin developing a modern Java 12 containerized REST application.
 
@@ -75,7 +75,7 @@ That depends. This application is ready to be shipped in your favorite orchestra
 
 ### How should I implement HTTPS / SSL?
 
-#### Application Load Balancer
+#### Load balancer
 
 If you're in a production environment and need your application to scale, I would look at **AWS Application Load Balancer**, **GCP Cloud Load Balancing**, or **Azure Load Balancer**. Most load balancers fully support HTTPS/SSL and will send requests to your instance in your cloud's internal network via HTTP which reduces load at your application and still covers for most security use-cases.
 

@@ -50,7 +50,7 @@ https://tomcat.apache.org/download-90.cgi
 
 #### Configure your IDE to listen to debugger
 
-In this example I will be using Intellij IDEA. You can add/edit configuration at the top-right. Select Tomcat Server > Remote.
+In this example I will be using Intellij IDEA. You can add/edit configuration by clicking the run profile drop-down and click "Edit Configurations" at the top-right of the IDE. In this dropdown, select Tomcat Server > Remote.
 
 You will want to bind the application to the Tomcat 9 binary you downloaded above. You will also want the debug profile
 in start-up/connection section to be set to port 8000.
@@ -62,6 +62,26 @@ in start-up/connection section to be set to port 8000.
 #### Listen from your IDE
 
 Start the debug profile here and it should listen to your breakpoints after the docker image has been built and is running.
+
+## FAQs
+
+### Why isn't feature X inside of this project template?
+
+It was tempting to add unit testing, protected routes, JSON serialization, and more. However, the goal of this project is to be as unopinionated as possible while at the same time allowing a developer to immediately be productive in writing a REST web application with a modern Java stack. Every team and project has different requirements and use cases; this code allows you to build any of those custom requirements on top of pre-existing and well-known technologies.
+
+### How should I deploy this application?
+
+That depends. This application is ready to be shipped in your favorite orchestration technology that supports Docker. It can also be run as a single instance through Docker/Compose. Your deployment strategy depends on use case, scalability, availability, and other requirements that you and your team have for your project.
+
+### How should I implement HTTPS / SSL?
+
+#### Application Load Balancer
+
+If you're in a production environment and need your application to scale, I would look at **AWS Application Load Balancer**, **GCP Cloud Load Balancing**, or **Azure Load Balancer**. Most load balancers fully support HTTPS/SSL and will send requests to your instance in your cloud's internal network via HTTP which reduces load at your application and still covers for most security use-cases.
+
+#### Web server reverse proxy
+
+If you're running in a non-scalable environment, a single instance in production, or in a staging/development/qa/misc environment I would recommend looking at a reverse proxy using **nginx** or **Apache**.
 
 ## References
 

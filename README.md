@@ -20,7 +20,7 @@ This project is designed to get you bootstrapped immediately by providing a mini
 ### For Development
 
 * Java 12 JDK
-* IDE (Intellij, NetBeans, Eclipse, etc)
+* IDE (Intellij IDEA, NetBeans, Eclipse, etc)
 
 ## Getting Started
 
@@ -50,7 +50,7 @@ https://tomcat.apache.org/download-90.cgi
 
 #### Configure your IDE to listen to debugger
 
-In this example I will be using Intellij IDEA. You can add/edit configuration at the top-right. Select Tomcat Server.
+In this example I will be using Intellij IDEA. You can add/edit configuration at the top-right. Select Tomcat Server > Remote.
 
 You will want to bind the application to the Tomcat 9 binary you downloaded above. You will also want the debug profile
 in start-up/connection section to be set to port 8000.

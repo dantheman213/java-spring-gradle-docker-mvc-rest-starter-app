@@ -5,22 +5,28 @@ This project is designed to get you bootstrapped immediately by providing a mini
 ## What you get
 
 * Java 12
-* Spring MVC + Boot
+* Spring MVC
+* Spring Boot
+  - Embedded Tomcat 9 web server
 * Gradle 5.4.x
 * Docker
-* Docker Compose
+* Compose
 
 ## Prerequisites
 
 ### Minimum Software Required To Deploy
 
-* Docker
-* Docker-Compose
+* [Docker](https://www.docker.com)
+* [Compose](https://docs.docker.com/compose)
 
 ### For Development
 
-* Java 12 JDK
-* IDE (Intellij IDEA, NetBeans, Eclipse, etc)
+* [Java 12 JDK](https://www.oracle.com/technetwork/java/javase/downloads/jdk12-downloads-5295953.html)
+* IDE ([Intellij IDEA](https://www.jetbrains.com/idea), [NetBeans](https://netbeans.org), [Eclipse](https://www.eclipse.org/ide), etc)
+
+#### Debugging
+
+* [Tomcat 9](https://tomcat.apache.org/download-90.cgi)
 
 ## Getting Started
 
@@ -44,9 +50,9 @@ The application is now running. Please visit [http://localhost:8080/](http://loc
 
 ### Debug Application Within Docker Container
 
-#### Download Tomcat 9
+#### Download & Install Tomcat 9
 
-https://tomcat.apache.org/download-90.cgi
+The download link is provided above. Decompress the archive and place the Tomcat 9 directory somewhere easily accessible, like your user's home directory.
 
 #### Configure your IDE to listen to debugger
 
@@ -67,7 +73,11 @@ Start the debug profile here and it should listen to your breakpoints after the 
 
 ### Why isn't feature X inside of this project template?
 
-It was tempting to add unit testing, error handling, protected routes, JSON serialization, and more. However, the goal of this project is to be as unopinionated as possible while at the same time allowing a developer to immediately be productive in writing a REST web application with a modern Java stack. Every team and project has different requirements and use cases; this code allows you to build any of those custom requirements on top of pre-existing and well-known technologies. I may add new things if I can find a modular way for a new developer to quickly decouple anything he or she does not want. Community feedback welcome.
+It was tempting to add unit testing, error handling, protected routes, JSON serialization, and more. However, the goal of this project is to be as unopinionated as possible while at the same time allowing a developer to immediately be productive in writing a REST web application with a modern Java stack.
+
+This code allows you to build any of those custom requirements on top of pre-existing and well-known technologies.
+
+I may add new things if I can find a modular way for a new developer to quickly decouple anything he or she does not want. Community feedback welcome.
 
 ### How should I deploy this application?
 

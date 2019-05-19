@@ -101,6 +101,14 @@ If you're running in a non-scalable environment, a single instance in production
 
 3. In general, SSL is more related to infrastructure than application level so there is a developer benefit of separation of concerns here.
 
+### What is a secret?
+
+Modern enterprise applications are typically written to be state independent on the code level. In the infrastructure you can then inject a list of secrets. A secret is typically an environment variable for values such as timeouts, connection credentials, API keys, and other values that you'd want to customize between production/staging/developer/qa/local environments.
+
+### Why use `secrets.env` instead of `application.properties`?
+
+I wouldn't recommend `application.properties` because it is not a portable solution that you can use across multiple languages and is not supported by typical Docker-based orchestration software. Environment variable injection is however very common and supported by typical orchestration software like Kubernetes, ECS, Swarm, and Compose.
+
 ## References
 
 [Spring Boot Getting Started](https://spring.io/guides/gs/spring-boot/)

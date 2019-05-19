@@ -129,6 +129,10 @@ Modern enterprise applications are typically written to be state independent on 
 
 I wouldn't recommend `application.properties` because it is not a portable solution that you can use across multiple languages and is not supported by typical Docker-based orchestration software. Environment variable injection is however very common and supported by typical orchestration software like Kubernetes, ECS, Swarm, and Compose.
 
+## Contribute
+
+Community feedback is welcome. If you spot bugs or optimization issues in the code or believe that the README can be improved, feel free to submit a pull request. You're also welcome to submit a new issue as well that fully explains the problem and recommended solution.
+
 ## References
 
 [Spring Boot Getting Started](https://spring.io/guides/gs/spring-boot/)

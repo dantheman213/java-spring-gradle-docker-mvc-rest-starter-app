@@ -73,7 +73,7 @@ Start the debug profile here and it should listen to your breakpoints after the 
 
 ### Why isn't feature X inside of this project template?
 
-It was tempting to add unit testing, error handling, protected routes, JSON serialization, and more. However, the goal of this project is to be as unopinionated as possible while at the same time allowing a developer to immediately be productive in writing a REST web application with a modern Java stack.
+It was tempting to add logging, error handling, protected routes, JSON serialization, unit testing, and more. However, the goal of this project is to be as unopinionated as possible while at the same time allowing a developer to immediately be productive in writing a REST web application with a modern Java stack.
 
 This code allows you to build any of those custom requirements on top of pre-existing and well-known technologies.
 

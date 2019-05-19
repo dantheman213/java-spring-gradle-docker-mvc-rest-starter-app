@@ -16,15 +16,21 @@ This project is designed to get you bootstrapped immediately by providing a mini
 
 ### Minimum Software Required To Deploy Application
 
+You **only** need these items to run the application on any supported device:
+
 * [Docker](https://www.docker.com)
 * [Compose](https://docs.docker.com/compose)
 
 ### For Development
 
+If you plan on writing code please also install these items as well:
+
 * [Java 12 JDK](https://www.oracle.com/technetwork/java/javase/downloads/jdk12-downloads-5295953.html)
 * IDE ([Intellij IDEA](https://www.jetbrains.com/idea), [NetBeans](https://netbeans.org), [Eclipse](https://www.eclipse.org/ide), etc)
 
 #### Debugging
+
+If you are writing code and will need to debug the application, please download this item:
 
 * [Tomcat 9](https://tomcat.apache.org/download-90.cgi)
 
@@ -36,7 +42,7 @@ Open your IDE, I recommend **Intellij IDEA** but you can use your favorite IDE, 
 
 ### Managing Secrets
 
-Does your application have state data you need to inject at runtime? Add environment variables to a `secrets.env` file to be loaded at container start.
+Does your application have state data you need to inject at runtime? Create a file in your project root called `secrets.env`. Then uncomment the lines in `docker-compose.yml` mentioning `secrets.env`. Compose will read this file to be loaded at container start. You can add environment variables to be injected into your container at runtime. Check out `secrets.env.example` in order to see some practical examples.
 
 Compatible with clouds like AWS, GCP, and Heroku in addition to services like Compose, Swarm, ECS, or Kubernetes.
 
@@ -73,7 +79,7 @@ Start the debug profile here and it should listen to your breakpoints after the 
 
 ### Why isn't feature X inside of this project template?
 
-It was tempting to add logging, error handling, protected routes, JSON serialization, unit testing, and more. However, the goal of this project is to be as unopinionated as possible while at the same time allowing a developer to immediately be productive in writing a REST web application with a modern Java stack.
+It was tempting to add things such as reading environment variables to configuration, logging, error handling, protected routes, JSON serialization, unit testing, and more. However, the goal of this project is to be as unopinionated as possible while at the same time allowing a developer to immediately be productive in writing a REST web application with a modern Java stack.
 
 This code allows you to build any of those custom requirements on top of pre-existing and well-known technologies.
 

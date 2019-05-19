@@ -36,16 +36,6 @@ If you are writing code and will need to debug the application, please download 
 
 ## Getting Started
 
-### Import Project into IDE
-
-Open your IDE, I recommend **Intellij IDEA** but you can use your favorite IDE, and import this project as a **Gradle** project. Allow your IDE to download **Gradle** for you automatically (if you'd like to run locally) and pull in the required sources specified in your `build.gradle`.
-
-### Managing Secrets
-
-Does your application have state data you need to inject at runtime? Create a file in your project root called `secrets.env`. Then uncomment the lines in `docker-compose.yml` mentioning `secrets.env`. Compose will read this file to be loaded at container start. You can add environment variables to be injected into your container at runtime. Check out `secrets.env.example` in order to see some practical examples.
-
-Compatible with clouds like AWS, GCP, and Heroku in addition to services like Compose, Swarm, ECS, or Kubernetes.
-
 ### Build Docker Image & Run Application
 
     docker-compose up --build -d
@@ -54,7 +44,25 @@ Compatible with clouds like AWS, GCP, and Heroku in addition to services like Co
 
 The application is now running. Please visit [http://localhost:8080/](http://localhost:8080/).
 
+## Development
+
+Ready to start writing code on top of this project? Please follow these steps:
+
+### Import Project into IDE
+
+Open your IDE, I recommend **Intellij IDEA** but you can use your favorite IDE, and import this project as a **Gradle** project. Allow your IDE to download **Gradle** for you automatically (if you'd like to run locally) and pull in the required sources specified in your `build.gradle`.
+
+### Write Code
+
+If your IDE's Gradle import was successful or you're using a text editor, you may begin writing code.
+
+### Run New Code
+
+Instructions on how to run the application are mentioned earlier. Save your work and follow the same steps above.
+
 ### Debug Application Within Docker Container
+
+Need to debug your experimental application code for this project? Here is how I recommend getting started:
 
 #### Download & Install Tomcat 9
 
@@ -74,6 +82,12 @@ in start-up/connection section to be set to port 8000.
 #### Listen from your IDE
 
 Start the debug profile here and it should listen to your breakpoints after the docker image has been built and is running.
+
+### Managing Secrets
+
+Does your application have state data you need to inject at runtime? Create a file in your project root called `secrets.env`. Then uncomment the lines in `docker-compose.yml` mentioning `secrets.env`. Compose will read this file to be loaded at container start. You can add environment variables to be injected into your container at runtime. Check out `secrets.env.example` in order to see some practical examples.
+
+Compatible with clouds like AWS, GCP, and Heroku in addition to services like Compose, Swarm, ECS, or Kubernetes.
 
 ## FAQs
 

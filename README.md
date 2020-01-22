@@ -1,4 +1,4 @@
-# Java REST Starter app
+# Java REST starter app
 
 This project is designed to get you bootstrapped immediately by providing a minimum set of code you'll need to begin developing a modern Java REST app that is ready to run natively or in a container.
 
@@ -32,7 +32,7 @@ If you plan on writing code:
 
 ## Development
 
-##### Debug app within Docker container
+#### Debug app within Docker container
 
 &#8291;1. Download & Install Tomcat 9
 
@@ -57,13 +57,11 @@ Start the debug profile here and it should listen to your breakpoints after the 
 
 ### Why isn't feature X inside of this project template?
 
-It was tempting to add things such as reading environment variables to configuration, logging, error handling, protected routes, JSON serialization, unit testing, and more. However, the goal of this project is to be as unopinionated as possible while at the same time allowing a developer to immediately be productive in writing a REST web app with a modern Java stack.
-
-This code allows you to build any of those custom requirements on top of pre-existing and well-known technologies.
+The goal of this project is to provide a streamlined initial starting point for a developer to immediately be productive in writing modern Java REST web app.
 
 ### How should I deploy this app?
 
-That depends. This app is ready to be shipped in your favorite orchestration technology that supports Docker. It can also be run as a single instance through Docker/Compose. Your deployment strategy depends on use case, scalability, availability, and other requirements that you and your team have for your project.
+This app is ready to run natively or be shipped in your favorite orchestration technology that supports Docker.
 
 ### How should I implement HTTPS / SSL?
 

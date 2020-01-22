@@ -2,7 +2,7 @@
 
 This project is designed to get you bootstrapped immediately by providing a minimum set of code you'll need to begin developing a modern Java REST app that is ready to run natively or in a container.
 
-## Download and run
+## Getting Started
 
     docker-compose up --build -d
 
